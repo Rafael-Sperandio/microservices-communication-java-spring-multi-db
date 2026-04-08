@@ -1,0 +1,89 @@
+version: "3"
+services: 
+  sales_rabbit:
+    image: rabbitmq:3-management
+    container_name: sales_rabbit
+    hostname: sales_rabbit
+    networks:
+      - sales-network
+    ports:
+      - 5672:5672
+      - 25676:25676
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+
+  auth-db:
+    image: postgres:11
+    container_name: auth-db-spring-2026
+    restart: always
+    networks:
+      - sales-network
+    environment:
+      - POSTGRES_DB=auth-db-spring-2026
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - 5432:5432
+
+  sales-db:
+    image: mongo:latest
+    container_name: sales-db-spring-2026 
+    restart: always
+    networks:
+      - sales-network
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+    ports:
+      - 27017:27017
+
+  product-db:
+    image: postgres:11
+    container_name: spring-2026-product-db
+    restart: always
+    networks:
+      - sales-network
+    environment:
+      - POSTGRES_DB=spring-2026-product-db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - 5433:5432
+
+  product-api:
+    build: './product-api'
+    container_name: product-api
+    networks:
+      - sales-network 
+    environment:
+      - PORT=8081
+    ports:
+      - 8081:8081
+
+  sales-api:
+    build: './sales-api'
+    container_name: sales-api
+    networks:
+      - sales-network
+    environment:
+      - PORT=8082
+    ports:
+      - 8082:8082
+
+  auth-api:
+    build: './auth-api'
+    container_name: auth-api
+    networks:
+      - sales-network
+    environment:
+      - PORT=8080
+
+    ports:
+      - 8080:8080
+
+networks:
+  sales-network:
+    driver: bridge

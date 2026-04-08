@@ -1,0 +1,55 @@
+
+
+https://www.udemy.com/course/comunicacao-entre-microsservicos/learn/lecture/24715548#overview
+http://udemy.com/course/comunicacao-entre-microsservicos/learn/lecture/26207654#overview
+POS
+docker run --name auth-db-spring-2026 -p 5434:5432 -e POSTGRES_DB=auth-db-spring-2026 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=123456 -d postgres:11
+
+docker run --name spring-2026-product-db -p 5433:5432 -e POSTGRES_DB=spring-2026-product-db -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=123456 -d postgres:11
+
+Container RabbitMQ:
+// utilizando as senhas e usario padrões guest e guest
+docker run --name sales_rabbit -p 5672:5672 -p 25676:25676 -p 15672:15672 rabbitmq:3-management
+
+
+MONGODB comandos
+criado nova variável de ambiente para
+C:\Users\janai\Documents\cursos\MongoShell\mongosh-2.8.2-win32-x64\bin
+
+
+docker run --name sales-db-spring-2026 \
+-p 27017:27017 \
+-e MONGO_INITDB_ROOT_USERNAME=admin \
+-e MONGO_INITDB_ROOT_PASSWORD=123456 \
+-d mongo
+
+mongosh "mongodb://admin:123456@localhost:27017/admin"
+use sales-db-spring-2026
+db.createCollection("sales")
+
+exemplo de insert
+db.sales.insertOne({
+  produto: "Notebook",
+  preco: 3500
+})
+
+db.sales.find()
+
+
+
+
+
+// antigo
+
+MONGODB
+tutum/mongodb
+
+docker run --name sales-db-spring-2026 -p 27017:27017 -p 28017:28017 -e MONGODB_DATABASE=sales-db-spring-2026 -e MONGODB_USER=admin -e MONGODB_PASSWORD=123456 -d tutum/mongodb
+
+
+
+mongosh "mongodb://admin:123456@localhost:27017/sales-db-spring-2026?authSource=admin"
+
+wsl --shutdown
+
+
