@@ -1,0 +1,11 @@
+
+
+TODO: pode ser melhorado o path
+
+feito
+http://localhost:8080/api/status
+http://localhost:8080/api/user/email/teste@gmail.com
+Revisar aula 24
+
+revisar testar pela aula 27
+
