@@ -1,7 +1,26 @@
 server:
-  port: {PORT:8081}
+  port: ${PORT:8081}
 
 
 spring:
   application:
     name: product-api
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/spring-2026-product-db
+    username: admin
+    password: 123456
+    initialization-mode: always
+    continue-on-error: true
+    platform: postgresql
+    maxActive: 3
+# dbl-auto: create-drop  recria o banco de dados sempre que executa
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
