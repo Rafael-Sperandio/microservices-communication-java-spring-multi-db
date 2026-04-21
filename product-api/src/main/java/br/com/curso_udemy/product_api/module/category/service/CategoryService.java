@@ -1,15 +1,11 @@
 package br.com.curso_udemy.product_api.module.category.service;
-import br.com.curso_udemy.product_api.config.exceptions.SucessResponse;
+import br.com.curso_udemy.product_api.config.exceptions.SuccessResponse;
 import br.com.curso_udemy.product_api.config.exceptions.ValidationException;
-import br.com.curso_udemy.product_api.module.Supplier.dto.SupplierRequest;
-import br.com.curso_udemy.product_api.module.Supplier.dto.SupplierResponse;
-import br.com.curso_udemy.product_api.module.Supplier.model.Supplier;
 import br.com.curso_udemy.product_api.module.category.dto.CategoryRequest;
 import br.com.curso_udemy.product_api.module.category.dto.CategoryResponse;
 import br.com.curso_udemy.product_api.module.category.model.Category;
 import br.com.curso_udemy.product_api.module.category.repository.CategoryRepository;
 import br.com.curso_udemy.product_api.module.product.repository.ProductRepository;
-import br.com.curso_udemy.product_api.module.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -81,13 +77,13 @@ public class CategoryService {
         }
     }
 
-    public SucessResponse delete(Integer id){
+    public SuccessResponse delete(Integer id){
         validateInformedId(id);
         if(productRepository.existsByCategoryId(id)){
             throw new ValidationException("You cannot delete this category because it's already defined by a product.");
         }
         categoryRepository.deleteById(id);
-        return SucessResponse.create("the category was deleted.");
+        return SuccessResponse.create("the category was deleted.");
 
     }
     private void validateInformedId(Integer id){

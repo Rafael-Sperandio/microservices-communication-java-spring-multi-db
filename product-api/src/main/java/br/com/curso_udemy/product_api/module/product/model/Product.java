@@ -50,8 +50,6 @@ public class Product {
         createdAt = LocalDateTime.now();
     }
 
-
-
     public static Product of(ProductRequest request,Supplier supplier,Category category){
         return Product
                 .builder()
@@ -60,5 +58,10 @@ public class Product {
                 .supplier(supplier)
                 .category(category)
                 .build();
+    }
+
+    //remove uma quantidade de produtos do stock
+    public void updateStock(Integer quantity){
+        this.quantityAvailable -= quantity;
     }
 }

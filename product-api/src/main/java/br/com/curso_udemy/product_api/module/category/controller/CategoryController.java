@@ -1,10 +1,9 @@
 package br.com.curso_udemy.product_api.module.category.controller;
 
-import br.com.curso_udemy.product_api.config.exceptions.SucessResponse;
+import br.com.curso_udemy.product_api.config.exceptions.SuccessResponse;
 import br.com.curso_udemy.product_api.module.category.dto.CategoryRequest;
 import br.com.curso_udemy.product_api.module.category.dto.CategoryResponse;
 import br.com.curso_udemy.product_api.module.category.service.CategoryService;
-import br.com.curso_udemy.product_api.module.product.dto.ProductResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +41,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("{id}")
-    public SucessResponse delete(@PathVariable Integer id) {
+    public SuccessResponse delete(@PathVariable Integer id) {
         return categoryService.delete(id);
     }
 }

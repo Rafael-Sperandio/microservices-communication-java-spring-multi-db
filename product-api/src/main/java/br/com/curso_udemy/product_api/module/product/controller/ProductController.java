@@ -1,10 +1,10 @@
 package br.com.curso_udemy.product_api.module.product.controller;
 
-import br.com.curso_udemy.product_api.config.exceptions.SucessResponse;
-import br.com.curso_udemy.product_api.module.Supplier.dto.SupplierRequest;
-import br.com.curso_udemy.product_api.module.Supplier.dto.SupplierResponse;
+import br.com.curso_udemy.product_api.config.exceptions.SuccessResponse;
+import br.com.curso_udemy.product_api.module.product.dto.ProductCheckStockRequest;
 import br.com.curso_udemy.product_api.module.product.dto.ProductRequest;
 import br.com.curso_udemy.product_api.module.product.dto.ProductResponse;
+import br.com.curso_udemy.product_api.module.product.dto.ProductSalesResponse;
 import br.com.curso_udemy.product_api.module.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -53,8 +53,19 @@ public class ProductController {
     }
 
     @DeleteMapping("{id}")
-    public SucessResponse delete(@PathVariable Integer id) {
+    public SuccessResponse delete(@PathVariable Integer id) {
         return productService.delete(id);
     }
+
+    @PostMapping("check-stock")
+    public SuccessResponse checkProductsStock(@RequestBody ProductCheckStockRequest request) {
+        return productService.checkProductsStock(request);
+    }
+
+    @GetMapping("{id}/sales/")
+    public ProductSalesResponse findProductSales(@PathVariable Integer id){
+        return  productService.findProductSales(id);
+    }
+
 
 }

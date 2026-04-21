@@ -1,11 +1,9 @@
 package br.com.curso_udemy.product_api.module.Supplier.controller;
 
-import br.com.curso_udemy.product_api.config.exceptions.SucessResponse;
+import br.com.curso_udemy.product_api.config.exceptions.SuccessResponse;
 import br.com.curso_udemy.product_api.module.Supplier.dto.SupplierRequest;
 import br.com.curso_udemy.product_api.module.Supplier.dto.SupplierResponse;
 import br.com.curso_udemy.product_api.module.Supplier.service.SupplierService;
-import br.com.curso_udemy.product_api.module.category.dto.CategoryRequest;
-import br.com.curso_udemy.product_api.module.category.dto.CategoryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,7 +41,7 @@ public class SupplierController {
         return supplierService.update(request,id);
     }
     @DeleteMapping("{id}")
-    public SucessResponse delete(@PathVariable Integer id) {
+    public SuccessResponse delete(@PathVariable Integer id) {
         return supplierService.delete(id);
     }
 }
