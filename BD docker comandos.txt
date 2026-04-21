@@ -24,6 +24,8 @@ docker run --name sales-db-spring-2026 \
 -d mongo
 
 mongosh "mongodb://admin:123456@localhost:27017/admin"
+
+mongosh "mongodb://admin:123456@localhost:27017/sales-db-spring-2026"
 use sales-db-spring-2026
 db.createCollection("sales")
 
