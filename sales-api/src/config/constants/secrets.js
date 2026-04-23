@@ -15,3 +15,4 @@ export const RABBIT_MQ_URL = env.RABBIT_MQ_URL
 export const PRODUCT_API_URL = env.PRODUCT_API_URL
   ? env.PRODUCT_API_URL
   : "http://localhost:8081/api/product";
+  

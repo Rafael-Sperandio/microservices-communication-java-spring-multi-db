@@ -5,11 +5,14 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "startDev": "nodemon app.js"
+    "startDev": "nodemon app.js",
+    "startContainer": "cross-env NODE_ENV=container nodemon app.js"
   },
   "dependencies": {
     "amqplib": "^1.0.3",
+    "axios": "^1.15.2",
     "cors": "^2.8.6",
+    "cross-env": "^10.1.0",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.5.0"

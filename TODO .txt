@@ -1,22 +1,28 @@
-AuthInterceptor , FeingClient , sales crud,rabbitmq config
+revisar
 
+
+
+http://localhost:8082/api/order/create
 {
-  "salesId": "asd6s51sd",
   "products": [
     {
-      "productId": 1,
-      "quantity": 15
+      "productId": 1001,
+      "quantity": 3
     },
     {
-      "productId": 2,
-      "quantity": 8
+      "productId": 1002,
+      "quantity": 5
     },
     {
-      "productId": 3,
-      "quantity": 15
+      "productId": 1003,
+      "quantity": 3
     }
   ]
 }
+
+
+{"salesId" : "1asd156","status": "APPROVED"}
+rever teste aula 53 
 
 
 apiauth
@@ -32,11 +38,3 @@ revisar testar pela aula 27
 
 api product
 TODO: fazer padronização de mensagem de erro
-
-32 a 35 1h de aula
-
-fazer aulas 34 e 35
-
-até as 11:30h fazer 35 e 36
-23+ 19 = 41
-se  der tempo fazer 37

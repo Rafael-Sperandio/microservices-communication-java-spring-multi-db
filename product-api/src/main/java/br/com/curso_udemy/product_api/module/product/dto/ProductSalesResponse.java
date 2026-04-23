@@ -20,8 +20,6 @@ import java.util.List;
 public class ProductSalesResponse {
     private Integer id;
     private String name;
-    private Integer productId;
-
     private SupplierResponse supplier;
     private CategoryResponse category;
     @JsonProperty("quantity_available")
@@ -36,7 +34,7 @@ public class ProductSalesResponse {
     public static ProductSalesResponse of(Product product,List<String>sales){
         return  ProductSalesResponse
                 .builder()
-                .productId(product.getId())
+                .id(product.getId())
                 .name(product.getName())
                 .quantityAvailable(product.getQuantityAvailable())
                 .createdAt(product.getCreatedAt())

@@ -1,4 +1,4 @@
-package br.com.curso_udemy.product_api.config.intercerptor;
+package br.com.curso_udemy.product_api.config.interceptor;
 
 import br.com.curso_udemy.product_api.module.jwt.service.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
