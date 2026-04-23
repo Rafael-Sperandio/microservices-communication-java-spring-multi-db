@@ -1,28 +1,4 @@
-revisar
-
-
-
-http://localhost:8082/api/order/create
-{
-  "products": [
-    {
-      "productId": 1001,
-      "quantity": 3
-    },
-    {
-      "productId": 1002,
-      "quantity": 5
-    },
-    {
-      "productId": 1003,
-      "quantity": 3
-    }
-  ]
-}
-
-
-{"salesId" : "1asd156","status": "APPROVED"}
-rever teste aula 53 
+revisar aula 53 
 
 
 apiauth
