@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "type": "module",
-
   "_moduleAliases": {
     "@src": "src"
   },
@@ -18,10 +17,10 @@
     "jsonwebtoken": "^9.0.3",
     "module-alias": "^2.3.4",
     "pg": "^8.20.0",
-    "sequelize": "^6.37.8"
+    "sequelize": "^6.37.8",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
   }
-
 }

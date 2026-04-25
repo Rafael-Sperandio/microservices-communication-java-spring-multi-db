@@ -15,7 +15,7 @@ import java.util.Optional;
 url = "${app-config.services.sales}")
 public interface SalesClient {
     @GetMapping("/api/orders/product/{productId}")
-    Optional<SalesProductResponse> findSalesByProductId(@PathVariable Integer productId);
-    //@RequestHeader(name = "Authorization") String authorization,
-    //@RequestHeader(name = "transactionId") String transactionId
+    Optional<SalesProductResponse> findSalesByProductId(@PathVariable Integer productId,
+                                                        @RequestHeader(name = "Authorization") String authorization,
+                                                        @RequestHeader(name = "transactionid") String transactionid);
 }

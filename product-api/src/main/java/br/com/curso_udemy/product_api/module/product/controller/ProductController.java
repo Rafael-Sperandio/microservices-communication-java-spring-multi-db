@@ -54,7 +54,7 @@ public class ProductController {
 
     @DeleteMapping("{id}")
     public SuccessResponse delete(@PathVariable Integer id) {
-        return productService.delete(id);
+            return productService.delete(id);
     }
 
     @PostMapping("check-stock")

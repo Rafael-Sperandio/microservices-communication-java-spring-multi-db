@@ -1,5 +1,6 @@
 package br.com.curso_udemy.product_api.config.interceptor;
 
+import br.com.curso_udemy.product_api.config.exceptions.ValidationException;
 import br.com.curso_udemy.product_api.module.jwt.service.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -7,9 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import java.util.UUID;
+
+import static org.springframework.util.ObjectUtils.isEmpty;
 public class AuthInterceptor implements HandlerInterceptor {
 
     private static final String AUTHORIZATION = "Authorization";
+    private static final String TRANSACTION_ID = "transactionid";
+
     @Autowired
     private JwtService jwtService;
     @Override
@@ -18,12 +24,14 @@ public class AuthInterceptor implements HandlerInterceptor {
         if(isOptions(request)){
             return true;
         }
+        if (isEmpty(request.getHeader(TRANSACTION_ID))) {
+            throw new ValidationException("The transactionid header is required.");
+        }
         var authorization = request.getHeader(AUTHORIZATION);
         jwtService.validateAuthorization(authorization);
+        request.setAttribute("serviceid", UUID.randomUUID().toString());
         return true;
-        // return HandlerInterceptor.super.preHandle(request, response, handler);
-
-    }
+   }
 
     private boolean isOptions(HttpServletRequest request){
         return HttpMethod.OPTIONS.name().equals(request.getMethod());

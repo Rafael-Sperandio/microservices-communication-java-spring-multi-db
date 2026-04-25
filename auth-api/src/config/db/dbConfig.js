@@ -24,6 +24,10 @@ sequelize
 } )
 .catch(err => {
     console.error('unable to conect')
-    console.error("essa é a mensagem de erro "+err.message)
+    if(err.message){
+        console.error(err.message)
+    }else{
+        console.error(err)
+    }
 });
 export default sequelize;

@@ -1,3 +1,7 @@
+trasantictionId - Id enviado por todos os serviços durante uma requisição
+
+serviceId - ID criado para cada serviço durante um transação
+
 revisar aula 53 
 
 

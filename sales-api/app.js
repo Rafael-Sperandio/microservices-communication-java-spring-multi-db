@@ -8,7 +8,7 @@ import { connectRabbitMq} from "./src/config/rabbitmq/rabbitConfig.js"
 
 import checkToken from "./src/config/auth/checkToken.js";
 import router from "./src/modules/sales/routes/OrderRoutes.js"
-
+import tracing from "./src/config/tracing.js";
 const app = express();
 const env = process.env
 const PORT = env.PORT || 8082;
@@ -18,38 +18,10 @@ createInitalData();
 connectRabbitMq();
 
 app.use(express.json())
+app.use(tracing)
 app.use(checkToken);
 app.use(router);
-/*
-app.get('/teste',async (req,res)=>{
-    try{
-        sendMessageToProductStockUpdateQueue(
-            [
-                {
-                "productId": 1001,
-                "quantity": 4
-                },
-                {
-                "productId": 1002,
-                "quantity": 2
-                },
-                {
-                "productId": 1003,
-                "quantity": 1
-                }
-            ]
-        )
-        return res.status(200).json({status: 200})
-    }catch(err){
-        console.log(err)
-        return res.status(500).json({error:true});
-    }
-    // let teste = await Order.find();
-    // console.log("teste : ",teste);
 
-    
-})
-//*/
 
 app.get('/api/status',async (req,res)=>{
     return res.status(200).json({
